@@ -12,6 +12,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&display=swap" rel="stylesheet">
+
     <title>{{ post.title }}</title>
     <style>
         @media only screen and (max-width: 703px) {
@@ -51,7 +55,23 @@
         }
 
         .nav-wrapper {
-            text-transform: uppercase;
+            background-color: rgb(251, 245, 239);
+        }
+        .brand-logo {
+            font-family: 'Dawning of a New Day', cursive;
+            font-size: 53px !important;
+            margin-top: 4px;
+            color: rgb(216, 163, 110) !important;
+            font-weight: lighter !important;
+        }
+        .brand-logo a{
+            color: rgb(216, 163, 110) !important;
+        }
+        nav {
+            height: 80px;
+        }
+        nav {
+            height: 80px;
         }
 
         .btn-floating i {
@@ -61,14 +81,20 @@
         .slide-social {
             padding-left: 10px;
         }
-        .nav-wrapper{
-            background-color: rgb(249,220,196);
-        }
         body {
             background-color: rgb(248,237,235);
         }
         .page-footer{
-            background-color: rgb(249,220,196);
+            background-color: rgb(251, 245, 239);
+        }
+        h5{
+            color: rgb(216, 163, 110) !important;
+        }
+        .subscribe{
+            color: rgb(216, 163, 110) !important;
+        }
+        .btn-floating {
+            background-color: rgb(216, 163, 110) !important;
         }
     </style>
 </head>
@@ -77,7 +103,7 @@
     <nav>
         <div class="nav-wrapper">
             <div class="brand-logo center">
-                <a href="{% url 'blogapp:home' %}">ALLSHAPES  </a>
+                <a href="{% url 'blogapp:home' %}">All Shapes  </a>
                 •
                 {% for category in post.categories.all %}
                 <a href="{% url 'blogapp:category' category.path_name %}">{{category.name}}{% if not forloop.last %}/{%endif%}</a>
@@ -126,31 +152,26 @@
         <div id="disqus_thread"></div>
     </div>
 
-    <footer class="page-footer">
+    <footer class="page-footer z-depth-5">
         <div class="container">
             <div class="row">
                 <div class="col s4">
-                    <h5 class="white-text">Newsletter</h5>
-                    <a class="grey-text text-lighten-3" href="https://mailchi.mp/33a744da0f70/allshapes"
+                    <h5>Newsletter</h5>
+                    <a class="subscribe" href="https://mailchi.mp/33a744da0f70/allshapes"
                         target="_blank">Subscribe</a>
                 </div>
                 <div class="col s4">
                     <a href="{% url 'blogapp:about' %}">
-                        <h5 class="white-text">About</h5>
+                        <h5>About</h5>
                     </a>
                 </div>
                 <div class="col s4">
-                    <h5 class="white-text">Keep in Touch</h5>
+                    <h5>Keep in Touch</h5>
                     <div class="row social-foot">
                         <a href="" class="waves-effect pulse btn-floating black">
                             <i class="fa fa-instagram"></i></a>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2020 Copyright
             </div>
         </div>
     </footer>

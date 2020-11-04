@@ -12,6 +12,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&display=swap" rel="stylesheet">
+
     <title>{{category.name}}</title>
     <style>
         
@@ -25,46 +29,85 @@
                 white-space: nowrap;
             }
         }
-
         .social-foot{
             padding-left: .75rem;
         }
-
         body {
             display: flex;
             min-height: 100vh;
             flex-direction: column;
         }
-
         main {
             flex: 1 0 auto;
         }
-
         .nav-wrapper {
-            text-transform: uppercase;
+            background-color: rgb(251, 245, 239);
         }
-
+        .brand-logo {
+            font-family: 'Dawning of a New Day', cursive;
+            font-size: 53px !important;
+            margin-top: 4px;
+            color: rgb(216, 163, 110) !important;
+            font-weight: lighter !important;
+        }
+        nav {
+            height: 80px;
+        }
         .card-row {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
         .btn-floating i{
             font-size: 2rem;
         }
-
         .slide-social {
             padding-left: 10px;
-        }
-        .nav-wrapper{
-            background-color: rgb(249,220,196);
         }
         body {
             background-color: rgb(248,237,235);
         }
         .page-footer{
-            background-color: rgb(249,220,196);
+            background-color: rgb(251, 245, 239);
+            
+        }
+        h5{
+            color: rgb(216, 163, 110) !important;
+        }
+        .subscribe{
+            color: rgb(216, 163, 110) !important;
+        }
+        .btn-floating {
+            background-color: rgb(216, 163, 110) !important;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: rgba(251, 245, 239, 0.75);
+        }
+
+        .card:hover .overlay {
+            opacity: 1;
+        }
+
+        .text {
+            font-family: 'Dawning of a New Day', cursive;
+            color: rgb(216, 163, 110);
+            font-size: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
     </style>
 </head>
@@ -72,7 +115,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="{% url 'blogapp:home' %}" class="brand-logo center">ALLSHAPES • {{category.name}}</a>
+            <a href="{% url 'blogapp:home' %}" class="brand-logo center">All Shapes • {{category.name}}</a>
             <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
         </div>
     </nav>
@@ -88,7 +131,7 @@
             <h5>Follow us on Social</h5>
         </li>
         <li>
-            <div class="slide-social"><a href="" class="waves-effect pulse btn-floating black">
+            <div class="slide-social"><a href="" class="waves-effect pulse btn-floating">
                     <i class="fa fa-instagram"></i></a>
             </div>
         </li>
@@ -103,7 +146,12 @@
                     <div class="card hoverable">
                         <div class="card-image">
                             {% if post.image %}
-                            <a href="{% url 'blogapp:post' post.id %}"><img src="{{post.image.url}}"></a>
+                            <img src="{{post.image.url}}">
+                            <a href="{% url 'blogapp:post' post.id %}" class="overlay">
+                                <div class="text">
+                                    {{post.title}}
+                                </div>
+                            </a>
                             {% endif %}
                         </div>
                         <div class="card-content">
@@ -118,32 +166,26 @@
             </div>
         </div>
     </main>
-    <footer class="page-footer">
+    <footer class="page-footer z-depth-5">
         <div class="container">
             <div class="row">
                 <div class="col s4">
-                    <h5 class="white-text">Newsletter</h5>
-                    <a class="grey-text text-lighten-3" href="https://mailchi.mp/33a744da0f70/allshapes"
+                    <h5>Newsletter</h5>
+                    <a class="subscribe" href="https://mailchi.mp/33a744da0f70/allshapes"
                         target="_blank">Subscribe</a>
                 </div>
                 <div class="col s4">
                     <a href="{% url 'blogapp:about' %}">
-                        <h5 class="white-text">About</h5>
+                        <h5>About</h5>
                     </a>
                 </div>
                 <div class="col s4">
-                    <h5 class="white-text">Keep in Touch</h5>
+                    <h5>Keep in Touch</h5>
                     <div class="row social-foot">
-                        <a href="" class="waves-effect pulse btn-floating black">
+                        <a href="" class="waves-effect pulse btn-floating">
                             <i class="fa fa-instagram"></i></a>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2020 Copyright
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
         </div>
     </footer>
