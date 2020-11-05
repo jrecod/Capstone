@@ -1,5 +1,5 @@
 
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [recodj.pythonanywhere.com]
 
