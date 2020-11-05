@@ -10,28 +10,119 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&display=swap" rel="stylesheet">
     <title>Dashboard</title>
     <style>
         .search-button {
             padding-top: 5px !important;
         }
+
         @media only screen and (max-width: 703px) {
             .brand-logo {
                 white-space: nowrap;
-                font-size: 19px !important; 
+                font-size: 19px !important;
             }
+
             h4 {
                 font-size: 20px;
                 white-space: nowrap;
             }
-            p{
+
+            p {
                 font-size: 12px;
             }
         }
-        @media only screen and (max-width: 1603px){
-            .view-post{
+
+        @media only screen and (max-width: 1603px) {
+            .view-post {
                 margin-top: 5px;
             }
+        }
+
+        .brand-logo {
+            font-family: 'Dawning of a New Day', cursive;
+            font-size: 53px !important;
+            margin-top: 4px;
+            color: rgb(216, 163, 110) !important;
+            font-weight: lighter !important;
+        }
+
+        .nav-wrapper {
+            background-color: rgb(251, 245, 239);
+        }
+
+        nav {
+            height: 80px;
+        }
+
+        nav ul a {
+            display: block;
+            line-height: 80px;
+            color: rgb(216, 163, 110) !important;
+            font-size: 15px;
+        }
+
+        nav .dropdown-trigger i {
+            line-height: 80px !important;
+        }
+
+        body {
+            background-color: rgb(248, 237, 235);
+        }
+
+        .btn-floating {
+            background-color: rgb(216, 163, 110) !important;
+        }
+
+        .btn {
+            background-color: rgb(216, 163, 110) !important
+        }
+
+        .btn-small {
+            background-color: rgb(216, 163, 110) !important
+        }
+
+        h4 {
+            color: rgb(216, 163, 110) !important
+        }
+
+        .card-image img {
+            height: 300px;
+            width: 200px !important;
+            object-fit: cover;
+        }
+
+        .card-container {
+            width: 1500px;
+        }
+
+        .card-row {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card {
+            height: 300px;
+            width: 550px;
+            background-color: rgb(251, 245, 239);
+        }
+
+        .btn-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-action {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .select-wrapper input.select-dropdown:focus {
+            border-bottom: 1px solid rgb(216, 163, 110);
         }
     </style>
 </head>
@@ -39,7 +130,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="{% url 'julieapp:dashboard' %}" class="brand-logo center">ALLSHAPES • DASHBOARD</a>
+            <a href="{% url 'julieapp:dashboard' %}" class="brand-logo center">All Shapes • Dashboard</a>
             <ul class="right hide-on-med-and-down">
                 <li><a target="_blank" href="https://us2.admin.mailchimp.com/">Newsletter</a></li>
                 <li><a target="_blank" href="https://disqus.com/admin/">Disqus</a></li>
@@ -48,7 +139,7 @@
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
-    
+
     <!-- side menu for mobile -->
     <ul id="slide-out" class="sidenav">
         <li><a target="_blank" href="https://us2.admin.mailchimp.com/">Newsletter</a></li>
@@ -58,14 +149,14 @@
         </li>
         <li><a href="{% url 'julieapp:logout' %}">Logout</a></li>
     </ul>
-
+    <!-- fixed create button -->
     <div class="fixed-action-btn">
-        <a href="{% url 'julieapp:create' %}" class="btn-floating btn-large red">
+        <a href="{% url 'julieapp:create' %}" class="btn-floating btn-large">
             <i class="large material-icons">add</i>
         </a>
     </div>
-    <!-- blog post cards -->
-    <div class="container">
+    <!-- search-bar -->
+    <div class="container card-container">
         <form class="row" action="{% url 'julieapp:dashboard' %}" method="GET">
             <div class="input-field col m8 s12">
                 <input class="search-bar" name="search" type="text" placeholder="Search">
@@ -74,7 +165,8 @@
                 <select name="category">
                     <option value="">All categories</option>
                     {% for category in categories %}
-                    <option {% if selected_category == category.name %} selected {% endif %}value="{{category.name}}">{{category.name}}</option>
+                    <option {% if selected_category == category.name %} selected {% endif %}value="{{category.name}}">
+                        {{category.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -82,10 +174,10 @@
                 <button class="btn" type="submit">Search</button>
             </div>
         </form>
-
-        {% for post in posts %}
+        <!-- blog post cards -->
         <div class="row">
-            <div class="col s12 m7">
+            {% for post in posts %}
+            <div class="col m6 s12 card-row">
                 <h4>{{ post.title }}</h4>
                 <div class="card horizontal hoverable">
                     <div class="card-image">
@@ -93,7 +185,7 @@
                         <a target="_blank" href="{% url 'blogapp:post' post.id %}"><img src="{{post.image.url}}"></a>
                         {% endif %}
                     </div>
-                    <div class="card-stacked">
+                    <class class="card-stacked">
                         <div class="card-content">
                             <p><b>Category:</b>
                                 {% for category in post.categories.all %}{{category.name}}{% if not forloop.last %}/{%endif%}{% endfor %}
@@ -104,14 +196,15 @@
                         <div class="card-action">
                             <a href="{% url 'julieapp:edit' post.id %}" class="waves-effect waves-light btn-small"><i
                                     class="material-icons right">create</i>Edit Post</a>
-                            <a target="_blank" href="{% url 'blogapp:post' post.id %}" class="waves-effect waves-light btn-small view-post"><i
-                                class="material-icons right">visibility</i>View Post</a>
+                            <a target="_blank" href="{% url 'blogapp:post' post.id %}"
+                                class="waves-effect waves-light btn-small view-post"><i
+                                    class="material-icons right">visibility</i>View Post</a>
                         </div>
-                    </div>
+                    </class>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 
     <script>document.addEventListener('DOMContentLoaded', function () {

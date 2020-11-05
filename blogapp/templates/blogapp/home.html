@@ -19,18 +19,26 @@
     <title>ALLSHAPES/HOME</title>
 
     <style>
+        @media only screen and (max-width: 600px) {
+            .overlay{
+                opacity: 1 !important;
+            }
+        }
+        @media only screen and (max-width: 992px) {
+            .overlay-text{
+                font-size: 3rem !important;
+            }
+        }
         @media only screen and (max-width: 703px) {
             .brand-logo {
                 white-space: nowrap;
             }
         }
-
         @media only screen and (max-width: 419px) {
             .card-action {
                 white-space: nowrap;
             }
         }
-
         .dropdown-content li {
             display: flex;
             align-items: center;
@@ -38,53 +46,39 @@
             /* margin-top: 10px; */
             overflow: hidden;
         }
-
         .dropdown-content li>a {
             padding: 8px;
         }
-
         .slide-social {
             padding: 0 32px !important;
         }
-
         .nav-wrapper {
             background-color: rgb(251, 245, 239);
-            color: black;
         }
-
         body {
             background-color: rgb(248, 237, 235);
-
         }
-
         .sidenav {
             background-color: rgb(251, 245, 239);
             color: black;
         }
-
         .sidenav li>a {
             color: rgb(216, 163, 110) !important;
         }
-
         .dropdown-content {
             background-color: rgb(251, 245, 239);
-
         }
-
         .dropdown-content li>span {
             color: rgb(216, 163, 110) !important
         }
-
         .btn-floating {
             background-color: rgb(216, 163, 110) !important;
         }
-
         p {
             padding: 0 32px;
             font-size: 14px;
             font-weight: 500;
         }
-
         .brand-logo {
             font-family: 'Dawning of a New Day', cursive;
             font-size: 53px !important;
@@ -92,22 +86,18 @@
             color: rgb(216, 163, 110) !important;
             font-weight: lighter !important;
         }
-
         nav {
             height: 80px;
         }
-
         nav ul a {
             display: block;
             line-height: 80px;
             color: rgb(216, 163, 110) !important;
             font-size: 15px;
         }
-
         nav .dropdown-trigger i {
             line-height: 80px !important;
         }
-
         .overlay {
             position: absolute;
             top: 0;
@@ -120,15 +110,13 @@
             transition: .5s ease;
             background-color: rgba(251, 245, 239, 0.75);
         }
-
         .card:hover .overlay {
             opacity: 1;
         }
-
-        .text {
+        .overlay-text {
             font-family: 'Dawning of a New Day', cursive;
             color: rgb(216, 163, 110);
-            font-size: 100px;
+            font-size: 4.5rem;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -136,6 +124,9 @@
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             text-align: center;
+        }
+        .card {
+            background-color: rgb(251, 245, 239);
         }
     </style>
 </head>
@@ -177,13 +168,13 @@
     <div class="container">
         <div class="row">
             {% for category in categories %}
-            <div class="col s6">
+            <div class="col m6 s12">
                 <div class="card hoverable">
                     <div class="card-image">
                         {% if category.image %}
                         <img src="{{category.image.url}}">
-                        <a href="{% url 'blogapp:category' category.path_name %}" class="overlay"> 
-                            <div class="text">
+                        <a href="{% url 'blogapp:category' category.path_name %}" class="overlay">
+                            <div class="overlay-text">
                                 {{category.name}}
                             </div>
                         </a>
