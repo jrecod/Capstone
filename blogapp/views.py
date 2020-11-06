@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
-from .models import BlogPost, Category, AboutMe
+from .models import BlogPost, Category
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -36,9 +36,5 @@ def blog_post(request, post_id):
     return render(request, 'blogapp/blogPost.html', context)
 
 def about_me(request):
-    # about = AboutMe.objects.all()
-    # context = {
-    #     'about' : about,
-    # }
     return render(request, 'blogapp/about.html')
 
