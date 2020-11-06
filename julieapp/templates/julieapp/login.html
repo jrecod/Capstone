@@ -13,7 +13,7 @@
     <title>Blog Login</title>
     <style>
         body{
-            background-color: tan;
+            background-color: rgb(248, 237, 235);
         }
         .login-card {
             position: absolute;
@@ -24,21 +24,28 @@
             min-width: 400px;
             
         }
-        .login-card .card-content{
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-        }
-
         .login-card label{
             font-size: 16px;
-            color: seashell;
+            color: rgb(216, 163, 110) !important
         }
         .login-card input{
             font-size: 20px !important;
-            color: seashell;
+            color: rgb(216, 163, 110) !important;
         }
         .card{
-            background-color: transparent;
+            background-color: rgb(251, 245, 239) !important;
+            color: rgb(216, 163, 110) !important;
+        }
+        .card-action{
+            background-color: rgb(251, 245, 239) !important;
+            color: rgb(216, 163, 110) !important;
+        }
+        .btn {
+            background-color: rgb(216, 163, 110) !important;
+            color: rgb(251, 245, 239) !important
+        }
+        .divider{
+            background-color: rgb(216, 163, 110) !important;
         }
     </style>
 </head>
@@ -46,9 +53,10 @@
 <body>
     <div class="login-card col s12 ">
         <div class="card hoverable">
-            <div class="card-action brown white-text">
+            <div class="card-action">
                 <h3>Login</h3>
             </div>
+            <div class="divider"></div>
             <form class="card-content" method="post">
                 {% csrf_token %}
                 <div class="form-field">
