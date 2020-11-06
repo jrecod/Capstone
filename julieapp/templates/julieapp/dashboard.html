@@ -17,6 +17,7 @@
         .search-button {
             padding-top: 5px !important;
         }
+
         @media only screen and (max-width: 600px) {
             .overlay {
                 opacity: 1 !important;
@@ -27,14 +28,17 @@
                 top: 5px;
                 font-size: 34px !important;
             }
-            i.right{
+
+            i.right {
                 padding-right: 23px;
             }
-            .btn-small{
+
+            .btn-small {
                 width: 75px;
                 padding: 0 5px;
-            } 
+            }
         }
+
         @media only screen and (max-width: 703px) {
             .brand-logo {
                 font-size: 19px !important;
@@ -49,6 +53,7 @@
                 font-size: 12px;
             }
         }
+
         .brand-logo {
             font-family: 'Dawning of a New Day', cursive;
             font-size: 53px !important;
@@ -76,10 +81,12 @@
         nav .dropdown-trigger i {
             line-height: 80px !important;
         }
+
         .sidenav-trigger {
             color: rgb(216, 163, 110);
         }
-        .material-menu{
+
+        .material-menu {
             height: 80px !important;
             line-height: 80px !important;
             margin: 0 5px !important;
@@ -115,6 +122,7 @@
             display: flex;
             flex-direction: column;
         }
+
         .btn-row {
             display: flex;
             justify-content: center;
@@ -130,31 +138,40 @@
         .select-wrapper input.select-dropdown:focus {
             border-bottom: 1px solid rgb(216, 163, 110);
         }
-        .select-wrapper input{
+
+        .select-wrapper input {
             text-align: left;
         }
+
         .sidenav {
             background-color: rgb(251, 245, 239);
         }
+
         .sidenav li>a {
             color: rgb(216, 163, 110) !important;
         }
+
         .dropdown-content {
             background-color: rgb(251, 245, 239);
             color: rgb(216, 163, 110) !important;
         }
-        .dropdown-content li>span{
+
+        .dropdown-content li>span {
             color: rgb(216, 163, 110) !important;
         }
+
         .select-dropdown {
             color: rgb(216, 163, 110) !important;
         }
+
         .search-bar {
             color: rgb(216, 163, 110) !important;
         }
-        .search-bar input:focus{
+
+        .search-bar input:focus {
             border-bottom: 1px solid rgb(216, 163, 110);
         }
+
         .card {
             background-color: rgb(251, 245, 239);
         }
@@ -170,7 +187,8 @@
                 <li><a target="_blank" href="https://disqus.com/admin/">Disqus</a></li>
                 <li><a href="{% url 'julieapp:logout' %}">Logout</a></li>
             </ul>
-            <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons material-menu">menu</i></a>
+            <a href="#" data-target="slide-out" class="sidenav-trigger right"><i
+                    class="material-icons material-menu">menu</i></a>
         </div>
     </nav>
 
@@ -199,7 +217,8 @@
                 <select name="category">
                     <option value="">All categories</option>
                     {% for category in categories %}
-                    <option {% if selected_category == category.name %} selected {% endif %}value="{{category.name}}">{{category.name}}</option>
+                    <option {% if selected_category == category.name %} selected {% endif %}value="{{category.name}}">
+                        {{category.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -228,10 +247,12 @@
                         </div>
                         <div class="card-action">
                             <a href="{% url 'julieapp:edit' post.id %}" class="waves-effect waves-light btn-small"><i
-                                    class="material-icons right">create</i><span class="hide-on-small-only">Edit Post</span></a>
+                                    class="material-icons right">create</i><span class="hide-on-small-only">Edit
+                                    Post</span></a>
                             <a target="_blank" href="{% url 'blogapp:post' post.id %}"
                                 class="waves-effect waves-light btn-small view-post"><i
-                                    class="material-icons right">visibility</i><span class="hide-on-small-only">View Post</span></a>
+                                    class="material-icons right">visibility</i><span class="hide-on-small-only">View
+                                    Post</span></a>
                         </div>
                     </class>
                 </div>
