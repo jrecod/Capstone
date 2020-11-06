@@ -19,3 +19,7 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.title
+
+# class AboutMe(models .Model):
+#     image = models.ImageField(blank=True, null=True, upload_to='about_me_images/')
+#     body = models.TextField()

@@ -179,6 +179,9 @@
             font-size: 14px;
             font-weight: 500;
         }
+        .card-action{
+            text-align: center;
+        }
        
     </style>
 </head>
@@ -229,7 +232,7 @@
                             <p>{{post.description}}</p>
                         </div>
                         <div class="card-action">
-                            <a href="{% url 'blogapp:post' post.id %}">{{post.title}}</a>
+                            <a href="{% url 'blogapp:post' post.id %}">Read {{post.title}}</a>
                         </div>
                     </div>
                 </div>
