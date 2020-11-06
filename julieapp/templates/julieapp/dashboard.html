@@ -17,7 +17,30 @@
         .search-button {
             padding-top: 5px !important;
         }
+        @media only screen and (max-width: 600px) {
+            .overlay {
+                opacity: 1 !important;
+            }
 
+            nav .brand-logo {
+                /* z-index: 100; */
+                left: 155px !important;
+                top: 5px;
+                font-size: 34px !important;
+            }
+            .card{
+            height: 250px !important;
+            width: 330px !important;
+            }
+            .card-image img{
+            height: 250px !important;
+            object-fit: cover !important;
+            }
+            .btn-small{
+                width: 75px;
+                padding: 0 5px;
+            }
+        }
         @media only screen and (max-width: 703px) {
             .brand-logo {
                 white-space: nowrap;
@@ -31,12 +54,6 @@
 
             p {
                 font-size: 12px;
-            }
-        }
-
-        @media only screen and (max-width: 1603px) {
-            .view-post {
-                margin-top: 5px;
             }
         }
 
@@ -66,6 +83,12 @@
         nav .dropdown-trigger i {
             line-height: 80px !important;
         }
+        .sidenav-trigger {
+            color: rgb(216, 163, 110);
+            height: 80px !important;
+            line-height: 80px !important;
+            margin: 0 5px !important;
+        }
 
         body {
             background-color: rgb(248, 237, 235);
@@ -93,10 +116,6 @@
             object-fit: cover;
         }
 
-        .card-container {
-            width: 1500px;
-        }
-
         .card-row {
             display: flex;
             flex-direction: column;
@@ -104,7 +123,7 @@
 
         .card {
             height: 300px;
-            width: 550px;
+            width: 525px;
             background-color: rgb(251, 245, 239);
         }
 
@@ -116,13 +135,21 @@
 
         .card-action {
             display: flex;
-            flex-direction: row;
             justify-content: space-around;
-            align-items: center;
+            padding: 10px 0px !important;
         }
 
         .select-wrapper input.select-dropdown:focus {
             border-bottom: 1px solid rgb(216, 163, 110);
+        }
+        .select-wrapper input{
+            text-align: left;
+        }
+        .sidenav {
+            background-color: rgb(251, 245, 239);
+        }
+        .sidenav li>a {
+            color: rgb(216, 163, 110) !important;
         }
     </style>
 </head>
@@ -136,7 +163,7 @@
                 <li><a target="_blank" href="https://disqus.com/admin/">Disqus</a></li>
                 <li><a href="{% url 'julieapp:logout' %}">Logout</a></li>
             </ul>
-            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons sidenav-trigger">menu</i></a>
         </div>
     </nav>
 
@@ -156,7 +183,7 @@
         </a>
     </div>
     <!-- search-bar -->
-    <div class="container card-container">
+    <div class="container">
         <form class="row" action="{% url 'julieapp:dashboard' %}" method="GET">
             <div class="input-field col m8 s12">
                 <input class="search-bar" name="search" type="text" placeholder="Search">
@@ -165,8 +192,7 @@
                 <select name="category">
                     <option value="">All categories</option>
                     {% for category in categories %}
-                    <option {% if selected_category == category.name %} selected {% endif %}value="{{category.name}}">
-                        {{category.name}}</option>
+                    <option {% if selected_category == category.name %} selected {% endif %}value="{{category.name}}">{{category.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -189,8 +215,8 @@
                         <div class="card-content">
                             <p><b>Category:</b>
                                 {% for category in post.categories.all %}{{category.name}}{% if not forloop.last %}/{%endif%}{% endfor %}
-                            </p><br>
-
+                            </p>
+                            <br>
                             <p><b>Description:</b> {{post.description}}</p>
                         </div>
                         <div class="card-action">
@@ -207,21 +233,16 @@
         </div>
     </div>
 
-    <script>document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems, {});
-        });
-    </script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems, {});
-        });
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {});
 
-    // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
-    // var collapsibleElem = document.querySelector('.collapsible');
-    // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+            var elems_sidenav = document.querySelectorAll('.sidenav');
+            var instances_sidenav = M.Sidenav.init(elems_sidenav, {edge: 'right'});
+        });
+        // var instance = M.FormSelect.getInstance(elem);
+        document.querySelector('.select-dropdown.dropdown-trigger').style.width = '20px !important'
     </script>
 </body>
 

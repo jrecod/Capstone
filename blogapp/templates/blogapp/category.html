@@ -18,6 +18,30 @@
 
     <title>{{category.name}}</title>
     <style>
+        @media only screen and (max-width: 600px) {
+            .overlay {
+                opacity: 1 !important;
+            }
+
+            nav .brand-logo {
+                /* z-index: 100; */
+                left: 155px !important;
+                top: 5px;
+                font-size: 34px !important;
+            }
+            .card-image {
+            height: 300px !important;
+            }
+            .card-image>img{
+            height: 300px !important;
+            object-fit: cover !important;
+            }
+        }
+        @media only screen and (max-width: 1000px) {
+            .text {
+                font-size: 3rem !important;
+            }
+        }
         @media only screen and (max-width: 703px) {
             .brand-logo {
                 white-space: nowrap;
@@ -25,6 +49,11 @@
             }
             h5 {
                 font-size: 16px;
+                white-space: nowrap;
+            }
+        }
+        @media only screen and (max-width: 419px) {
+            .card-action {
                 white-space: nowrap;
             }
         }
@@ -42,9 +71,9 @@
         .nav-wrapper {
             background-color: rgb(251, 245, 239);
         }
-        .brand-logo {
+        nav .brand-logo {
             font-family: 'Dawning of a New Day', cursive;
-            font-size: 53px !important;
+            font-size: 53px ;
             margin-top: 4px;
             color: rgb(216, 163, 110) !important;
             font-weight: lighter !important;
@@ -53,14 +82,11 @@
         nav {
             height: 80px;
         }
-        .card-row {
-            display: flex;
-        }
         .btn-floating i {
             font-size: 2rem;
         }
         .slide-social {
-            padding-left: 10px;
+            padding: 0 32px !important;
         }
         body {
             background-color: rgb(248, 237, 235);
@@ -105,19 +131,55 @@
             text-align: center;
         }
         .card-image {
-            width: 600px;
             height: 500px;
         }
-        .card-image > img{
+        .card-image>img{
             height: 500px;
             object-fit: cover;
-        }
-        .card-container{
-            width: 1500px;
         }
         .card {
             background-color: rgb(251, 245, 239);
         }
+        nav .dropdown-trigger i {
+            line-height: 80px !important;
+        }
+        .sidenav-trigger{
+            line-height: 80px !important;
+            height: 80px !important;
+            display: flex;
+            align-self: center;
+        }
+        .material-icons {
+            color: rgb(216, 163, 110);
+            height: 80px !important;
+            line-height: 80px !important;
+        }
+        .sidenav {
+            background-color: rgb(251, 245, 239);
+            color: black;
+        }
+
+        .sidenav li>a {
+            color: rgb(216, 163, 110) !important;
+        }
+
+        .dropdown-content {
+            background-color: rgb(251, 245, 239);
+        }
+
+        .dropdown-content li>span {
+            color: rgb(216, 163, 110) !important
+        }
+
+        .btn-floating {
+            background-color: rgb(216, 163, 110) !important;
+        }
+        li p {
+            padding: 0 32px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+       
     </style>
 </head>
 
@@ -137,7 +199,7 @@
             <div class="divider"></div>
         </li>
         <li>
-            <h5>Follow us on Social</h5>
+            <p>Social Media</p>
         </li>
         <li>
             <div class="slide-social"><a href="" class="waves-effect pulse btn-floating">
@@ -148,7 +210,7 @@
 
     <!-- blog post cards -->
     <main>
-        <div class="container card-container">
+        <div class="container">
             <div class="row">
                 {% for post in posts %}
                 <div class="col m6 s12 card-row">
