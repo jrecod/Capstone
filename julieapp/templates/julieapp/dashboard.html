@@ -28,18 +28,11 @@
                 top: 5px;
                 font-size: 34px !important;
             }
-            .card{
-            height: 250px !important;
-            width: 330px !important;
-            }
-            .card-image img{
-            height: 250px !important;
-            object-fit: cover !important;
-            }
-            .btn-small{
+ 
+            /* .btn-small{
                 width: 75px;
                 padding: 0 5px;
-            }
+            }  */
         }
         @media only screen and (max-width: 703px) {
             .brand-logo {
@@ -56,7 +49,6 @@
                 font-size: 12px;
             }
         }
-
         .brand-logo {
             font-family: 'Dawning of a New Day', cursive;
             font-size: 53px !important;
@@ -85,6 +77,8 @@
         }
         .sidenav-trigger {
             color: rgb(216, 163, 110);
+        }
+        .material-menu{
             height: 80px !important;
             line-height: 80px !important;
             margin: 0 5px !important;
@@ -120,13 +114,6 @@
             display: flex;
             flex-direction: column;
         }
-
-        .card {
-            height: 300px;
-            width: 525px;
-            background-color: rgb(251, 245, 239);
-        }
-
         .btn-row {
             display: flex;
             justify-content: center;
@@ -151,6 +138,19 @@
         .sidenav li>a {
             color: rgb(216, 163, 110) !important;
         }
+        .dropdown-content {
+            background-color: rgb(251, 245, 239);
+            color: rgb(216, 163, 110) !important;
+        }
+        .dropdown-content li>span{
+            color: rgb(216, 163, 110) !important;
+        }
+        .select-dropdown {
+            color: rgb(216, 163, 110) !important;
+        }
+        .card {
+            background-color: rgb(251, 245, 239);
+        }
     </style>
 </head>
 
@@ -163,7 +163,7 @@
                 <li><a target="_blank" href="https://disqus.com/admin/">Disqus</a></li>
                 <li><a href="{% url 'julieapp:logout' %}">Logout</a></li>
             </ul>
-            <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons sidenav-trigger">menu</i></a>
+            <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons material-menu">menu</i></a>
         </div>
     </nav>
 
@@ -203,7 +203,7 @@
         <!-- blog post cards -->
         <div class="row">
             {% for post in posts %}
-            <div class="col m6 s12 card-row">
+            <div class="col xl6 m12 s12 card-row">
                 <h4>{{ post.title }}</h4>
                 <div class="card horizontal hoverable">
                     <div class="card-image">
@@ -221,10 +221,10 @@
                         </div>
                         <div class="card-action">
                             <a href="{% url 'julieapp:edit' post.id %}" class="waves-effect waves-light btn-small"><i
-                                    class="material-icons right">create</i>Edit Post</a>
+                                    class="material-icons right">create</i><span class="hide-on-small-only">Edit Post</span></a>
                             <a target="_blank" href="{% url 'blogapp:post' post.id %}"
                                 class="waves-effect waves-light btn-small view-post"><i
-                                    class="material-icons right">visibility</i>View Post</a>
+                                    class="material-icons right">visibility</i><span class="hide-on-small-only">View Post</span></a>
                         </div>
                     </class>
                 </div>
@@ -237,9 +237,10 @@
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('select');
             var instances = M.FormSelect.init(elems, {});
-
-            var elems_sidenav = document.querySelectorAll('.sidenav');
-            var instances_sidenav = M.Sidenav.init(elems_sidenav, {edge: 'right'});
+        })
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, { edge: 'right' });
         });
         // var instance = M.FormSelect.getInstance(elem);
         // document.querySelector('.select-dropdown.dropdown-trigger').style.width = '20px !important'

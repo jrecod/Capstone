@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,7 @@
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&display=swap" rel="stylesheet">
 
-    <title>{{category.name}}</title>
+    <title>About</title>
     <style>
         @media only screen and (max-width: 600px) {
             nav .brand-logo {
@@ -26,30 +27,37 @@
                 font-size: 34px !important;
             }
         }
+
         @media only screen and (max-width: 703px) {
             .brand-logo {
                 white-space: nowrap;
-                font-size: 19px !important; 
+                font-size: 19px !important;
             }
+
             h5 {
                 font-size: 16px;
                 white-space: nowrap;
             }
         }
-        .social-foot{
+
+        .social-foot {
             padding-left: .75rem;
         }
+
         body {
             display: flex;
             min-height: 100vh;
             flex-direction: column;
         }
+
         main {
             flex: 1 0 auto;
         }
+
         .nav-wrapper {
             background-color: rgb(251, 245, 239);
         }
+
         .brand-logo {
             font-family: 'Dawning of a New Day', cursive;
             font-size: 53px !important;
@@ -57,44 +65,56 @@
             color: rgb(216, 163, 110) !important;
             font-weight: lighter !important;
         }
+
         nav {
             height: 80px;
         }
+
         .card-row {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .btn-floating i{
+
+        .btn-floating i {
             font-size: 2rem;
         }
+
         .slide-social {
             padding-left: 10px;
         }
+
         body {
-            background-color: rgb(248,237,235);
+            background-color: rgb(248, 237, 235);
         }
-        .page-footer{
-            background-color: rgb(251, 245, 239); 
+
+        .page-footer {
+            background-color: rgb(251, 245, 239);
         }
-        h5{
+
+        h5 {
             color: rgb(216, 163, 110) !important;
         }
-        .subscribe{
+
+        .subscribe {
             color: rgb(216, 163, 110) !important;
         }
+
         .btn-floating {
             background-color: rgb(216, 163, 110) !important;
         }
+
         nav .dropdown-trigger i {
             line-height: 80px !important;
         }
-        .sidenav-trigger{
+
+        .sidenav-trigger {
             line-height: 80px !important;
             height: 80px !important;
             display: flex;
             align-self: center;
         }
+
         .sidenav {
             background-color: rgb(251, 245, 239);
             color: black;
@@ -109,6 +129,7 @@
             height: 80px !important;
             line-height: 80px !important;
         }
+
         .dropdown-content {
             background-color: rgb(251, 245, 239);
         }
@@ -116,13 +137,19 @@
         .dropdown-content li>span {
             color: rgb(216, 163, 110) !important
         }
+
         li p {
             padding: 0 32px;
             font-size: 14px;
             font-weight: 500;
         }
+
         .slide-social {
             padding: 0 32px !important;
+        }
+        .about-image {
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
@@ -157,13 +184,21 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <img class="post-image" src="{{about.image}}">
+                    <img class="about-image" src="{% static 'blogapp/images/Confidence.jpeg' %}">
                 </div>
                 <div class="col s12 body-overflow">
                     <p>
-                        I'm baby lo-fi ramps poke bicycle rights keffiyeh intelligentsia cred chia offal, hot chicken distillery trust fund. Single-origin coffee humblebrag etsy, fanny pack lo-fi sartorial hashtag kogi vice aesthetic cornhole palo santo narwhal. Gastropub shaman kickstarter fam enamel pin, snackwave af organic DIY pinterest tofu humblebrag iPhone raclette. Single-origin coffee venmo YOLO thundercats. Woke locavore cardigan jean shorts kombucha VHS messenger bag irony, gentrify readymade pinterest tumblr pabst cold-pressed next level. VHS chicharrones meditation dreamcatcher shabby chic tattooed. Vape skateboard fanny pack wayfarers irony synth chartreuse brunch woke trust fund ramps.
+                        Hello Folks! <br>
+                        <br>
+                        To start, I am fascinated by books, architecture, and plants. I was born and raised in Portland,
+                        Oregon. Yes, a true Oregonian. I love my trees. I have always had an eye for fashion. I always
+                        pictured myself helping other people evolve. I am a huge believer that happiness is the key to
+                        success. If I am not out enjoying a hike, you will see me cooped up indoors brewing myself a cup
+                        of coffee and watching classifical horror movies. I am all about women empowerment and achieving
+                        your goals in life. Everyone is accepted and loved. I hope my words inspire you to achieve
+                        greatness and become the best version of yourself. You are beautiful inside and out. Do not let
+                        anyone ever take that away from you. <br> <br> Yours truly, Julie Alvarez.
 
-                        Actually meggings yr copper mug williamsburg tumeric you probably haven't heard of them. Art party tumeric authentic, twee gochujang umami enamel pin tilde iPhone pabst. Flannel lumbersexual la croix, irony tattooed slow-carb master cleanse sriracha humblebrag church-key. Chillwave distillery knausgaard, pabst man bun drinking vinegar flexitarian mumblecore swag hammock bicycle rights synth. Succulents lyft cornhole sartorial celiac gochujang bespoke post-ironic. Coloring book man braid food truck, chia sartorial brooklyn blue bottle. Unicorn chambray kitsch typewriter migas mustache lomo health goth tote bag kombucha gastropub.
                     </p>
                 </div>
             </div>
@@ -175,8 +210,7 @@
             <div class="row">
                 <div class="col s4">
                     <h5>Newsletter</h5>
-                    <a class="subscribe" href="https://mailchi.mp/33a744da0f70/allshapes"
-                        target="_blank">Subscribe</a>
+                    <a class="subscribe" href="https://mailchi.mp/33a744da0f70/allshapes" target="_blank">Subscribe</a>
                 </div>
                 <div class="col s4">
                     <a href="{% url 'blogapp:about' %}">
@@ -198,7 +232,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems, {edge:'right'});
+            var instances = M.Sidenav.init(elems, { edge: 'right' });
         });
 
         // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
